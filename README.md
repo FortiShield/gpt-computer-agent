@@ -17,7 +17,7 @@
 </p>
 
   <p align="center">
-    <a href="https://www.producthunt.com/posts/gpt-computer-agent?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-gpt&#0045;computer&#0045;assistant" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=465468&theme=dark&period=daily" alt="GPT&#0032;Computer&#0032;Assistant - Create&#0032;intelligence&#0032;for&#0032;your&#0032;products | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+    <a href="https://www.producthunt.com/posts/gpt-computer-agent?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_souce=badge-gpt&#0045;computer&#0045;agent" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=465468&theme=dark&period=daily" alt="GPT&#0032;Computer&#0032;agent - Create&#0032;intelligence&#0032;for&#0032;your&#0032;products | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
     .
     <a href="https://discord.gg/qApFmWMt8x"><img alt="Static Badge" src="https://img.shields.io/badge/Discord-Join?style=social&logo=discord" width=150></a>
     .
@@ -125,7 +125,7 @@ remote.save_openai_api_key("sk-**")
 # Name of the assitant:
 remote.change_name("X Intelligence")
 
-#Developer personna of the assistant:
+#Developer personna of the agent:
 remote.change_developer("X Company")
 ```
 
@@ -180,7 +180,7 @@ def my_server_status() -> bool:
 
 ### remote.input
 
-Talk with assistant, about user and computer. With this api you can create an consulting process.
+Talk with agent, about user and computer. With this api you can create an consulting process.
 
 ```markdown
 `Hi, look to user window and return which app using now`
@@ -254,7 +254,7 @@ print(output)
 | Text Inputs               | Completed      | Q2 2024        |
 | Just Text Mode (Mute Speech)           | Completed  | Q2 2024        |
 | Added profiles (Different Chats)          | Completed    | Q2 2024        |
-| More Feedback About Assistant Status                  | Completed    | Q2 2024        |
+| More Feedback AboutAgent Status                  | Completed    | Q2 2024        |
 | Local Model Vision and Text (With Ollama, and vision models)  | Completed  | Q2 2024        |
 | **Our Customizable Agent Infrastructure**              | Completed      | Q2 2024        |
 | Supporting Groq Models  | Completed  | Q2 2024        |
@@ -307,7 +307,7 @@ At this time we have many infrastructure elements. We just aim to provide whole 
 | **[Add more tool](https://github.com/khulnasoft/gpt-computer-agent/blob/master/gpt_computer_agent/standard_tools.py)**           |            ?                    |
 
 ### Predefined Agents
-If you enable it your assistant will work with these teams:
+If you enable it your agent will work with these teams:
 
 | Team Name                         | Status                      |
 |------------------------------------|----------------------------------|
