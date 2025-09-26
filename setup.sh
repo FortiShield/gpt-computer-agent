@@ -1,42 +1,73 @@
 #!/bin/bash
+# Aideck Development Environment Setup Script
+# This script sets up the development environment for the Aideck project
+
 set -e
 
-# Colors for output
-GREEN='\033[0;32m'
-NC='\033[0m' # No Color
+echo "🚀 Setting up Aideck development environment..."
 
-echo -e "${GREEN}Setting up GPT Computer Agent with uv...${NC}"
+# Check if we're in the right directory
+if [ ! -f "pyproject.toml" ]; then
+    echo "❌ Error: pyproject.toml not found. Please run this script from the project root."
+    exit 1
+fi
 
-# Install uv if not already installed
+# Check Python version
+PYTHON_VERSION=$(python3 --version 2>&1 | awk '{print $2}')
+echo "🐍 Python version: $PYTHON_VERSION"
+
+if [[ "$(python3 -c 'import sys; print(sys.version_info[0])')" -lt 3 ]]; then
+    echo "❌ Error: Python 3.10 or higher is required"
+    exit 1
+fi
+
+# Check if uv is installed
 if ! command -v uv &> /dev/null; then
-    echo -e "${GREEN}Installing uv...${NC}"
+    echo "📦 Installing uv package manager..."
     curl -LsSf https://astral.sh/uv/install.sh | sh
-    # Add uv to PATH for current session
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-# Ensure Python virtual environment exists
-if [ ! -d ".venv" ]; then
-    echo -e "${GREEN}Creating virtual environment...${NC}"
-    python3 -m venv .venv
+# Install dependencies
+echo "📦 Installing project dependencies..."
+uv sync --extra dev --extra rag --extra storage
+
+# Set up environment file
+if [ ! -f ".env" ]; then
+    echo "📝 Creating .env file from template..."
+    cp .env.example .env
+    echo "⚠️  Please edit .env file and add your API keys!"
+    echo "   - OPENAI_API_KEY"
+    echo "   - ANTHROPIC_API_KEY (optional)"
+    echo "   - SECRET_KEY"
 fi
 
-# Activate virtual environment
-source .venv/bin/activate
+# Create necessary directories
+echo "📁 Creating necessary directories..."
+mkdir -p logs
+mkdir -p uploads
+mkdir -p data
 
-# Install the project in development mode with all dependencies
-echo -e "${GREEN}Installing dependencies with uv...${NC}"
-uv pip install --upgrade pip
-uv pip install -e ".[dev]"
+# Install pre-commit hooks
+echo "🔧 Setting up pre-commit hooks..."
+uv run pre-commit install
 
-# Install rich explicitly
-echo -e "${GREEN}Installing rich...${NC}"
-uv pip install "rich>=14.0.0"
+# Run tests to verify setup
+echo "🧪 Running tests to verify setup..."
+uv run pytest --version
 
-# Verify installation
-echo -e "\n${GREEN}Verifying installation...${NC}"
-python -c "from gpt_computer_agent import start; print('Import successful!')"
-
-echo -e "\n${GREEN}Setup complete!${NC}"
-echo "To activate the virtual environment, run:"
-echo "source .venv/bin/activate"
+echo ""
+echo "✅ Setup complete!"
+echo ""
+echo "🚀 To start the application:"
+echo "   uv run python -m aideck"
+echo ""
+echo "🔧 To run tests:"
+echo "   uv run pytest"
+echo ""
+echo "📝 To run linting:"
+echo "   uv run pre-commit run --all-files"
+echo ""
+echo "⚠️  Don't forget to:"
+echo "   1. Edit .env file with your API keys"
+echo "   2. Run 'uv run python -m aideck' to start the application"

@@ -3,7 +3,7 @@
 *.mp3
 *.wav
 *.wav*
-gpt_computer_agent/utils/artifacts/*.png
+aideck/utils/artifacts/*.png
 *.db
 *.db-shm
 *.db-wal

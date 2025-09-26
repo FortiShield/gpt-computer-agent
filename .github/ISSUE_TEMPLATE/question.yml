@@ -1,5 +1,5 @@
 name: Question 🤷‍♂️
-description: Got a question about GPT-Computer-Agent, deployment, development or usage?
+description: Got a question about Aideck, deployment, development or usage?
 title: '[QUESTION] <title>'
 labels: ['🤷‍♂️ Question']
 assignees:
@@ -10,9 +10,9 @@ body:
   - type: markdown
     attributes:
       value: >
-        Thanks for using GPT-Computer-Agent! Questions are welcome, but in the future will be moving over to
-        [Discussions](https://github.com/khulnaSoft/gpt-computer-agent/discussions) page.
-        Quick questions should be asked [here](https://github.com/khulnaSoft/gpt-computer-agent/discussions/148) instead.
+        Thanks for using Aideck! Questions are welcome, but in the future will be moving over to
+        [Discussions](https://github.com/khulnaSoft/aideck/discussions) page.
+        Quick questions should be asked [here](https://github.com/khulnaSoft/aideck/discussions/148) instead.
     validations:
       required: false
 
